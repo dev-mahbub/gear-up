@@ -2,6 +2,18 @@
   "name": "gear-up",
   "version": "0.0.1",
   "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/dev-mahbub/gear-up#readme",
+  "bugs": {
+    "url": "https://github.com/dev-mahbub/gear-up/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dev-mahbub/gear-up.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
   "main": "server.ts",
   "scripts": {
     "dev": "tsx watch src/server.ts",
@@ -10,10 +22,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "stripe:webhook": "stripe listen --forward-to localhost:5000/api/subscription/webhook"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
@@ -32,9 +40,10 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.1.0",
     "@types/pg": "^8.20.0",
     "prisma": "^7.8.0",
-    "tsx": "^4.22.4",
+    "tsx": "^4.23.0",
     "typescript": "^6.0.3"
   }
 }
