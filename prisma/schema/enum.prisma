@@ -1,18 +1,26 @@
 enum Role {
+  ADMIN
   CUSTOMER
   PROVIDER
-  ADMIN
 }
 
-enum ActiveStatus {
+enum UserActiveStatus {
   ACTIVE
   BLOCKED
 }
 
-
+enum RentalOrderStatus {
+  PLACED
+  CONFIRMED
+  CANCELLED
+  PAID
+  PICKED_UP
+  RETURNED
+}
 
 enum SubscriptionStatus {
   ACTIVE
   CANCELED
   EXPIRED
 }
+
