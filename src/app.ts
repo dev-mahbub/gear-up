@@ -26,7 +26,7 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 //routes
-app.use("/api/demo");
+app.get("/", (req: Request, res: Response) => {});
 
 //global error handler
 app.use(notFound);
