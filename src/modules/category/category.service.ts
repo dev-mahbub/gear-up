@@ -22,6 +22,9 @@ const categoryCreateToDB = async (payload: IGearUpCategoryPayload) => {
   return result;
 };
 
+const getAllCategoryToDB = async () => {};
+
 export const categoryService = {
   categoryCreateToDB,
+  getAllCategoryToDB,
 };
