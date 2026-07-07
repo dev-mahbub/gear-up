@@ -3,8 +3,8 @@ model User {
   name          String           @db.VarChar(255)
   email         String           @unique
   password      String
-  phone         String
-  address       String
+  phone         String?
+  address       String?
   role          Role             @default(CUSTOMER)
   active_status UserActiveStatus @default(ACTIVE)
 
