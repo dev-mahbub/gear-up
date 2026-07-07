@@ -81,6 +81,9 @@ const refreshTokenService = async (refreshToken: string) => {
 const getCurrentUser = async (userId: string) => {
   const result = prisma.user.findUniqueOrThrow({
     where: { id: userId },
+    omit: {
+      password: true,
+    },
   });
 
   return result;

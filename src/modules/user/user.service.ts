@@ -28,6 +28,9 @@ const registerUserToDB = async (payload: IUserRegisterPayload) => {
       role,
       status,
     },
+    omit: {
+      password: true,
+    },
   });
 
   return result;
