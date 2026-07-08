@@ -23,6 +23,44 @@ const createGear = catchAsync(
   },
 );
 
+const getAllGear = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const result = await gearService.getAllGearToDB();
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Gears retirved successfully",
+      data: result,
+    });
+  },
+);
+
+const getGearById = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const gearId = req.params?.id;
+    const result = await gearService.getGearWithIdToDB(gearId as string);
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Gear retirved successfully",
+      data: result,
+    });
+  },
+);
+
+const updateGear = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);
+
+const deleteGear = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {},
+);
+
 export const gearController = {
   createGear,
+  getAllGear,
+  getGearById,
+  updateGear,
+  deleteGear,
 };

@@ -29,9 +29,38 @@ const createGearToDB = async (provider_id: string, payload: IGearPayload) => {
   return result;
 };
 
-const getAllGearToDB = async () => {};
+const getAllGearToDB = async () => {
+  const result = await prisma.gear.findMany({
+    include: {
+      category: true,
+      provider: {
+        omit: {
+          password: true,
+        },
+      },
+    },
+  });
 
-const getGearWithIdToDB = async (gearId: string) => {};
+  return result;
+};
+
+const getGearWithIdToDB = async (gearId: string) => {
+  const gear = await prisma.gear.findUniqueOrThrow({
+    where: {
+      id: gearId,
+    },
+    include: {
+      category: true,
+      provider: {
+        omit: {
+          password: true,
+        },
+      },
+    },
+  });
+
+  return gear;
+};
 
 const updateGearToDB = async (gearId: string, payload: IGearPayload) => {};
 
