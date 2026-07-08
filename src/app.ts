@@ -8,6 +8,7 @@ import { globalErrorHandler } from "./middleware/globalErrorHandler";
 import { userRoutes } from "./modules/user/user.route";
 import { categoryRoutes } from "./modules/category/category.route";
 import { loginRoutes } from "./modules/auth/login.route";
+import { gearRoutes } from "./modules/gear/gear.route";
 
 const app: Application = express();
 
@@ -32,6 +33,7 @@ app.get("/", async (req: Request, res: Response) => {
 app.use("/api/users", userRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/auth", loginRoutes);
+app.use("/api/gears", gearRoutes);
 
 //global error handler
 app.use(notFound);
