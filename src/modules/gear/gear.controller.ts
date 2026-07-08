@@ -50,7 +50,26 @@ const getGearById = catchAsync(
 );
 
 const updateGear = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {},
+  async (req: Request, res: Response, next: NextFunction) => {
+    const provider_id = req.user?.id;
+    const gear_id = req.params.id;
+    const payload = req.body;
+    const isProvider = req.user?.role === "PROVIDER";
+
+    const result = await gearService.updateGearToDB(
+      provider_id as string,
+      gear_id as string,
+      payload,
+      isProvider,
+    );
+
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Gear updated successfully",
+      data: result,
+    });
+  },
 );
 
 const deleteGear = catchAsync(

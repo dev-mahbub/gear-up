@@ -62,7 +62,51 @@ const getGearWithIdToDB = async (gearId: string) => {
   return gear;
 };
 
-const updateGearToDB = async (gearId: string, payload: IGearPayload) => {};
+const updateGearToDB = async (
+  provider_id: string,
+  gearId: string,
+  payload: IGearPayload,
+  isProvider: boolean,
+) => {
+  const {
+    name,
+    brand,
+    description,
+    rental_price_per_day,
+    stock,
+    is_available,
+    image,
+    category_id,
+  } = payload;
+
+  const gear = await prisma.gear.findUnique({
+    where: {
+      id: gearId,
+    },
+  });
+
+  if (!isProvider && gear?.provider_id === provider_id) {
+    throw new Error("Your are not owner of this gear");
+  }
+
+  const result = await prisma.gear.update({
+    where: {
+      id: gearId,
+    },
+    data: {
+      name,
+      brand,
+      description,
+      rental_price_per_day,
+      stock,
+      is_available,
+      image,
+      category_id,
+    },
+  });
+
+  return result;
+};
 
 const deleteGearToDB = async (gearId: string) => {};
 
