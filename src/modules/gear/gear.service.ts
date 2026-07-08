@@ -108,7 +108,25 @@ const updateGearToDB = async (
   return result;
 };
 
-const deleteGearToDB = async (gearId: string) => {};
+const deleteGearToDB = async (
+  gearId: string,
+  provider_id: string,
+  isProvider: boolean,
+) => {
+  const gear = await prisma.gear.findUniqueOrThrow({
+    where: { id: gearId },
+  });
+
+  if (!isProvider && gear.provider_id === provider_id) {
+    throw new Error("Your are not owner of this gear");
+  }
+
+  await prisma.gear.delete({
+    where: {
+      id: gearId,
+    },
+  });
+};
 
 export const gearService = {
   createGearToDB,
