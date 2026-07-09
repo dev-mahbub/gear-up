@@ -25,12 +25,12 @@ const createGear = catchAsync(
 
 const getAllGear = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const result = await gearService.getAllGearToDB();
+    const result = await gearService.getAllGearToDB(req.query);
 
     sendResponse(res, {
       success: true,
       statusCode: httpStatus.OK,
-      message: "Gears retirved successfully",
+      message: "Gears retrieved successfully",
       data: result,
     });
   },
