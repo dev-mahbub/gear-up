@@ -9,6 +9,7 @@ import { userRoutes } from "./modules/user/user.route";
 import { categoryRoutes } from "./modules/category/category.route";
 import { loginRoutes } from "./modules/auth/login.route";
 import { gearRoutes } from "./modules/gear/gear.route";
+import { rentalOrderRoutes } from "./modules/rentalOrder/rentalOrder.route";
 
 const app: Application = express();
 
@@ -34,6 +35,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/auth", loginRoutes);
 app.use("/api/gears", gearRoutes);
+app.use("/api/rentalOrdres", rentalOrderRoutes);
 
 //global error handler
 app.use(notFound);
