@@ -23,42 +23,44 @@ const createRentalOrder = catchAsync(
   },
 );
 
-// const getMyRentalOrders = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const customerId = req.user.id;
+const getMyRentalOrders = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const customerId = req.user?.id;
 
-//     const result = await rentalOrderService.getMyRentalOrdersFromDB(customerId);
+    const result = await rentalOrderService.getMyRentalOrdersFromDB(
+      customerId as string,
+    );
 
-//     sendResponse(res, {
-//       success: true,
-//       statusCode: httpStatus.OK,
-//       message: "Rental orders retrieved successfully",
-//       data: result,
-//     });
-//   },
-// );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Rental orders retrieved successfully",
+      data: result,
+    });
+  },
+);
 
-// const getRentalOrderWithId = catchAsync(
-//   async (req: Request, res: Response, next: NextFunction) => {
-//     const customerId = req.user.id;
-//     const rentalOrderId = req.params.id;
+const getRentalOrderWithId = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const customerId = req.user?.id;
+    const rentalOrderId = req.params?.id;
 
-//     const result = await rentalOrderService.getRentalOrderWithIdFromDB(
-//       rentalOrderId,
-//       customerId,
-//     );
+    const result = await rentalOrderService.getRentalOrderWithIdFromDB(
+      rentalOrderId as string,
+      customerId as string,
+    );
 
-//     sendResponse(res, {
-//       success: true,
-//       statusCode: httpStatus.OK,
-//       message: "Rental order retrieved successfully",
-//       data: result,
-//     });
-//   },
-// );
+    sendResponse(res, {
+      success: true,
+      statusCode: httpStatus.OK,
+      message: "Rental order retrieved successfully",
+      data: result,
+    });
+  },
+);
 
 export const rentalOrderController = {
   createRentalOrder,
-  //   getMyRentalOrders,
-  //   getRentalOrderWithId,
+  getMyRentalOrders,
+  getRentalOrderWithId,
 };

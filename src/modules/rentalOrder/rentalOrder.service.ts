@@ -77,46 +77,46 @@ const createRentalOrderToDB = async (
   return result;
 };
 
-// const getMyRentalOrdersFromDB = async (customerId: string) => {
-//   const result = await prisma.rentalOrder.findMany({
-//     where: { customer_id: customerId },
-//     include: {
-//       rental_order_item: {
-//         include: { gear_item: true },
-//       },
-//     },
-//     orderBy: { createdAt: "desc" },
-//   });
+const getMyRentalOrdersFromDB = async (customerId: string) => {
+  const result = await prisma.rentalOrder.findMany({
+    where: { customer_id: customerId },
+    include: {
+      rental_order_item: {
+        include: { gear_item: true },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
 
-//   return result;
-// };
+  return result;
+};
 
-// const getRentalOrderWithIdFromDB = async (
-//   rentalOrderId: string,
-//   customerId: string,
-// ) => {
-//   const result = await prisma.rentalOrder.findUnique({
-//     where: { id: rentalOrderId },
-//     include: {
-//       rental_order_item: {
-//         include: { gear_item: true },
-//       },
-//     },
-//   });
+const getRentalOrderWithIdFromDB = async (
+  rentalOrderId: string,
+  customerId: string,
+) => {
+  const result = await prisma.rentalOrder.findUnique({
+    where: { id: rentalOrderId },
+    include: {
+      rental_order_item: {
+        include: { gear_item: true },
+      },
+    },
+  });
 
-//   if (!result) {
-//     throw new Error("Rental order not found");
-//   }
+  if (!result) {
+    throw new Error("Rental order not found");
+  }
 
-//   if (result.customer_id !== customerId) {
-//     throw new Error("You are not authorized to view this order");
-//   }
+  if (result.customer_id !== customerId) {
+    throw new Error("You are not authorized to view this order");
+  }
 
-//   return result;
-// };
+  return result;
+};
 
 export const rentalOrderService = {
   createRentalOrderToDB,
-  //   getMyRentalOrdersFromDB,
-  //   getRentalOrderWithIdFromDB,
+  getMyRentalOrdersFromDB,
+  getRentalOrderWithIdFromDB,
 };
