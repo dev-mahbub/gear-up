@@ -14,6 +14,7 @@ model User {
   customerOrders RentalOrder[] @relation("CustomerOrders")
 
   gears Gear[]
+ customerReviews Review[] @relation("CustomerReviews")
 
   @@map("users")
 }

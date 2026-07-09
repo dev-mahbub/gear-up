@@ -14,6 +14,7 @@ import {
   paymentRoutes,
   paymentWebhookRoute,
 } from "./modules/payment/payment.route";
+import { reviewRoutes } from "./modules/review/review.route";
 
 const app: Application = express();
 
@@ -43,6 +44,7 @@ app.use("/api/auth", loginRoutes);
 app.use("/api/gears", gearRoutes);
 app.use("/api/rentalOrdres", rentalOrderRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 //global error handler
 app.use(notFound);

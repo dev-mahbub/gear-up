@@ -6,8 +6,16 @@ import {
 
 const allowedTransitions: Record<string, string[]> = {
   PLACED: ["CONFIRMED", "CANCELLED"],
-  CONFIRMED: ["PICKED_UP", "CANCELLED"],
+
+  CONFIRMED: ["CANCELLED"],
+
+  PAID: ["PICKED_UP"],
+
   PICKED_UP: ["RETURNED"],
+
+  RETURNED: [],
+
+  CANCELLED: [],
 };
 
 const createRentalOrderToDB = async (
