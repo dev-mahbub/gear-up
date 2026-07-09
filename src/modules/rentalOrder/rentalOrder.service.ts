@@ -1,5 +1,14 @@
 import { prisma } from "../../lib/prisma";
-import { IRentalOrderPayload } from "./rentalOrder.interface";
+import {
+  IRentalOrderPayload,
+  IUpdateRentalOrderStatusPayload,
+} from "./rentalOrder.interface";
+
+const allowedTransitions: Record<string, string[]> = {
+  PLACED: ["CONFIRMED", "CANCELLED"],
+  CONFIRMED: ["PICKED_UP", "CANCELLED"],
+  PICKED_UP: ["RETURNED"],
+};
 
 const createRentalOrderToDB = async (
   customerId: string,
@@ -115,8 +124,85 @@ const getRentalOrderWithIdFromDB = async (
   return result;
 };
 
+const getProviderOrdersFromDB = async (providerId: string) => {
+  const result = await prisma.rentalOrder.findMany({
+    where: {
+      rental_order_item: {
+        some: {
+          gear_item: {
+            provider_id: providerId,
+          },
+        },
+      },
+    },
+    include: {
+      rental_order_item: {
+        include: { gear_item: true },
+      },
+      customer: {
+        select: { id: true, name: true, email: true, phone: true },
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
+
+  return result;
+};
+
+const updateOrderStatusToDB = async (
+  rentalOrderId: string,
+  providerId: string,
+  payload: IUpdateRentalOrderStatusPayload,
+) => {
+  const { status: newStatus } = payload;
+
+  const order = await prisma.rentalOrder.findUnique({
+    where: { id: rentalOrderId },
+    include: {
+      rental_order_item: {
+        include: { gear_item: true },
+      },
+    },
+  });
+
+  if (!order) {
+    throw new Error("Rental order not found");
+  }
+
+  const ownsAnyItem = order.rental_order_item.some(
+    (item) => item.gear_item.provider_id === providerId,
+  );
+
+  if (!ownsAnyItem) {
+    throw new Error("You are not authorized to update this order");
+  }
+
+  const currentStatus = order.status;
+  const allowedNextStatuses = allowedTransitions[currentStatus] || [];
+
+  if (!allowedNextStatuses.includes(newStatus)) {
+    throw new Error(
+      `Invalid status transition: cannot move from ${currentStatus} to ${newStatus}`,
+    );
+  }
+
+  const result = await prisma.rentalOrder.update({
+    where: { id: rentalOrderId },
+    data: { status: newStatus as any },
+    include: {
+      rental_order_item: {
+        include: { gear_item: true },
+      },
+    },
+  });
+
+  return result;
+};
+
 export const rentalOrderService = {
   createRentalOrderToDB,
   getMyRentalOrdersFromDB,
   getRentalOrderWithIdFromDB,
+  getProviderOrdersFromDB,
+  updateOrderStatusToDB,
 };
