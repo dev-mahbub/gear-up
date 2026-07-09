@@ -11,6 +11,8 @@ model User {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
+  customerOrders RentalOrder[] @relation("CustomerOrders")
+
   gears Gear[]
 
   @@map("users")
