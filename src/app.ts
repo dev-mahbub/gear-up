@@ -10,6 +10,10 @@ import { categoryRoutes } from "./modules/category/category.route";
 import { loginRoutes } from "./modules/auth/login.route";
 import { gearRoutes } from "./modules/gear/gear.route";
 import { rentalOrderRoutes } from "./modules/rentalOrder/rentalOrder.route";
+import {
+  paymentRoutes,
+  paymentWebhookRoute,
+} from "./modules/payment/payment.route";
 
 const app: Application = express();
 
@@ -20,6 +24,8 @@ app.use(
     credentials: true,
   }),
 );
+
+app.use("/api/payments", paymentWebhookRoute);
 
 //comment for middleware
 (app.use(express.json()),
@@ -36,6 +42,7 @@ app.use("/api/categories", categoryRoutes);
 app.use("/api/auth", loginRoutes);
 app.use("/api/gears", gearRoutes);
 app.use("/api/rentalOrdres", rentalOrderRoutes);
+app.use("/api/payments", paymentRoutes);
 
 //global error handler
 app.use(notFound);

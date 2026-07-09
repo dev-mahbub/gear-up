@@ -15,6 +15,7 @@ model RentalOrder {
   customer    User   @relation("CustomerOrders", fields: [customer_id], references: [id])
 
   rental_order_item RentalOrderItem[]
+  payment Payment?
 
   @@map("rental_orders")
 }

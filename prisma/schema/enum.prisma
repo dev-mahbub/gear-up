@@ -18,8 +18,8 @@ enum RentalOrderStatus {
   RETURNED
 }
 
-enum SubscriptionStatus {
-  ACTIVE
-  CANCELED
-  EXPIRED
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
 }
