@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { Role } from "../../generated/prisma/enums";
 import config from "../config/index.js";
 import { JwtPayload } from "jsonwebtoken";
 import httpStatus from "http-status";
 import { prisma } from "../lib/prisma";
 import { catchAsync } from "../utils/catchAsync";
 import { jwtUtils } from "../utils/jwt";
+import { Role } from "../../generated/prisma/index.js";
 
 declare global {
   namespace Express {
