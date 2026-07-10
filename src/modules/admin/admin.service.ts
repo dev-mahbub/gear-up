@@ -55,7 +55,7 @@ const getAllRentalOrdersFromDB = async () => {
       customer: {
         select: { id: true, name: true, email: true },
       },
-      rental_order_items: {
+      rental_order_item: {
         include: { gear_item: true },
       },
       payment: true,

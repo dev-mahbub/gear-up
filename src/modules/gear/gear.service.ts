@@ -34,6 +34,8 @@ const getAllGearToDB = async (query: Record<string, any>) => {
   const { category_id, brand, minPrice, maxPrice, is_available, search } =
     query;
 
+  console.log("brand", brand);
+
   const andConditions: Prisma.GearWhereInput[] = [];
 
   if (category_id) {
