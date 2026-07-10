@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
-    "module": "ESNext",
+    "module": "commonjs",
     "moduleResolution": "bundler",
     "target": "ES2023",
     "types": ["node"],
@@ -13,6 +13,7 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
+    "esModuleInterop": true,
     "skipLibCheck": true
   },
   // "include": ["src/**/*"],
