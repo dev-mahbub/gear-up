@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { auth } from "../../middleware/auth";
-import { Role } from "../../../prisma/generated/prisma/client";
 import express from "express";
 import { paymentController } from "./payment.contorller";
+import { Role } from "../../../prisma/generated/prisma/client";
 
 const router = Router();
 
