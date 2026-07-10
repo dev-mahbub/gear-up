@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { prisma } from "../lib/prisma";
 import { catchAsync } from "../utils/catchAsync";
 import { jwtUtils } from "../utils/jwt";
-import { Role } from "../../generated/prisma/index.js";
+import { Role } from "../../generated/prisma/enums.js";
 
 declare global {
   namespace Express {

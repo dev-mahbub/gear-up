@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { auth } from "../../middleware/auth";
-import { Role } from "../../../generated/prisma";
+import { Role } from "../../../generated/prisma/enums";
 
 import { rentalOrderController } from "./rentalOrder.controller";
 
