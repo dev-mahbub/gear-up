@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { auth } from "../../middleware/auth";
-import { Role } from "../../../prisma/generated/prisma/enums";
+import { Role } from "../../../generated/prisma/enums";
 import express from "express";
 import { paymentController } from "./payment.contorller";
 
