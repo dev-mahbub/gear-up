@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 // import { Role } from "../../generated/prisma/enums";
-import config from "../config";
+import config from "../config/index.js";
 import { JwtPayload } from "jsonwebtoken";
 import httpStatus from "http-status";
 import { prisma } from "../lib/prisma";
