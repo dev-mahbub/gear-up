@@ -34,9 +34,7 @@ const getAllGearToDB = async (query: Record<string, any>) => {
   const { category_id, brand, minPrice, maxPrice, is_available, search } =
     query;
 
-  console.log("brand", brand);
-
-  const andConditions: Prisma.GearWhereInput[] = [];
+  const andConditions: Array<Record<string, any>> = [];
 
   if (category_id) {
     andConditions.push({ category_id: category_id as string });
@@ -70,7 +68,7 @@ const getAllGearToDB = async (query: Record<string, any>) => {
     });
   }
 
-  const whereCondition: Prisma.GearWhereInput =
+  const whereCondition: Record<string, any> =
     andConditions.length > 0 ? { AND: andConditions } : {};
 
   const result = await prisma.gear.findMany({
