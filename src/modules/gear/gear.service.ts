@@ -1,6 +1,7 @@
-import { Prisma } from "../../../prisma/generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 import { IGearPayload } from "./gear.interface";
+
+type GearWhereCondition = Record<string, any>;
 
 const createGearToDB = async (provider_id: string, payload: IGearPayload) => {
   const {
@@ -34,9 +35,7 @@ const getAllGearToDB = async (query: Record<string, any>) => {
   const { category_id, brand, minPrice, maxPrice, is_available, search } =
     query;
 
-  console.log("brand", brand);
-
-  const andConditions: Prisma.GearWhereInput[] = [];
+  const andConditions: GearWhereCondition[] = [];
 
   if (category_id) {
     andConditions.push({ category_id: category_id as string });
@@ -70,7 +69,7 @@ const getAllGearToDB = async (query: Record<string, any>) => {
     });
   }
 
-  const whereCondition: Prisma.GearWhereInput =
+  const whereCondition: GearWhereCondition =
     andConditions.length > 0 ? { AND: andConditions } : {};
 
   const result = await prisma.gear.findMany({
