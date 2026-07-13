@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import express from "express";
 import cors from "cors";
-import config from "./config/index.js";
+import config from "./config/index";
 import cookieParser from "cookie-parser";
 import { notFound } from "./middleware/notFound";
 import { globalErrorHandler } from "./middleware/globalErrorHandler";

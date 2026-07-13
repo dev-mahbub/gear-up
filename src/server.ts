@@ -1,5 +1,5 @@
 import app from "./app";
-import config from "./config/index.js";
+import config from "./config/index";
 import "dotenv/config";
 import { prisma } from "./lib/prisma";
 
@@ -19,4 +19,8 @@ async function main() {
   }
 }
 
-main();
+// Only start the local server when NOT running on Vercel serverless.
+// On Vercel, the function entry (api/index.ts) exports the Express app directly.
+if (!process.env.VERCEL) {
+  main();
+}
