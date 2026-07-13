@@ -1,5 +1,5 @@
-import { prisma } from "../../lib/prisma";
-import { IGearUpCategoryPayload } from "./category.interface";
+import { prisma } from "../../lib/prisma.js";
+import { IGearUpCategoryPayload } from "./category.interface.js";
 
 const categoryCreateToDB = async (payload: IGearUpCategoryPayload) => {
   const { name, description } = payload;

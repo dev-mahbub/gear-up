@@ -1,7 +1,7 @@
-import app from "./app";
-import config from "./config/index";
+import app from "./app.js";
+import config from "./config/index.js";
 import "dotenv/config";
-import { prisma } from "./lib/prisma";
+import { prisma } from "./lib/prisma.js";
 
 const PORT = config.port;
 

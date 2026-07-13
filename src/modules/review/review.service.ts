@@ -1,5 +1,5 @@
-import { prisma } from "../../lib/prisma";
-import { IReviewPayload } from "./review.interface";
+import { prisma } from "../../lib/prisma.js";
+import { IReviewPayload } from "./review.interface.js";
 
 const createReviewToDB = async (
   customerId: string,

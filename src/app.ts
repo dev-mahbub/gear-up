@@ -1,21 +1,21 @@
 import { Application, Request, Response } from "express";
 import express from "express";
 import cors from "cors";
-import config from "./config/index";
+import config from "./config/index.js";
 import cookieParser from "cookie-parser";
-import { notFound } from "./middleware/notFound";
-import { globalErrorHandler } from "./middleware/globalErrorHandler";
-import { userRoutes } from "./modules/user/user.route";
-import { categoryRoutes } from "./modules/category/category.route";
-import { loginRoutes } from "./modules/auth/login.route";
-import { gearRoutes } from "./modules/gear/gear.route";
-import { rentalOrderRoutes } from "./modules/rentalOrder/rentalOrder.route";
+import { notFound } from "./middleware/notFound.js";
+import { globalErrorHandler } from "./middleware/globalErrorHandler.js";
+import { userRoutes } from "./modules/user/user.route.js";
+import { categoryRoutes } from "./modules/category/category.route.js";
+import { loginRoutes } from "./modules/auth/login.route.js";
+import { gearRoutes } from "./modules/gear/gear.route.js";
+import { rentalOrderRoutes } from "./modules/rentalOrder/rentalOrder.route.js";
 import {
   paymentRoutes,
   paymentWebhookRoute,
-} from "./modules/payment/payment.route";
-import { reviewRoutes } from "./modules/review/review.route";
-import { adminRoutes } from "./modules/admin/admin.route";
+} from "./modules/payment/payment.route.js";
+import { reviewRoutes } from "./modules/review/review.route.js";
+import { adminRoutes } from "./modules/admin/admin.route.js";
 
 const app: Application = express();
 

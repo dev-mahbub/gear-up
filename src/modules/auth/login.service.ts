@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
-import { prisma } from "../../lib/prisma";
-import { IUserLoginPayload } from "./login.interface";
-import { jwtUtils } from "../../utils/jwt";
-import config from "../../config";
+import { prisma } from "../../lib/prisma.js";
+import { IUserLoginPayload } from "./login.interface.js";
+import { jwtUtils } from "../../utils/jwt.js";
+import config from "../../config/index.js";
 import { JwtPayload, SignOptions } from "jsonwebtoken";
 
 const loginUserService = async (payload: IUserLoginPayload) => {

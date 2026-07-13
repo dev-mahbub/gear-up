@@ -1,5 +1,5 @@
-import { prisma } from "../../lib/prisma";
-import { IGearPayload } from "./gear.interface";
+import { prisma } from "../../lib/prisma.js";
+import { IGearPayload } from "./gear.interface.js";
 
 type GearWhereCondition = Record<string, any>;
 

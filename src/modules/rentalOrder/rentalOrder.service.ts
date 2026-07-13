@@ -1,8 +1,8 @@
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../lib/prisma.js";
 import {
   IRentalOrderPayload,
   IUpdateRentalOrderStatusPayload,
-} from "./rentalOrder.interface";
+} from "./rentalOrder.interface.js";
 
 const allowedTransitions: Record<string, string[]> = {
   PLACED: ["CONFIRMED", "CANCELLED"],

@@ -1,8 +1,8 @@
-import config from "../../config";
-import { prisma } from "../../lib/prisma";
-import { stripe } from "../../lib/stripe";
-import { handleCheckoutCompleted } from "./payment.utils";
-import { ICreateCheckoutSessionPayload } from "./payment.interface";
+import config from "../../config/index.js";
+import { prisma } from "../../lib/prisma.js";
+import { stripe } from "../../lib/stripe.js";
+import { handleCheckoutCompleted } from "./payment.utils.js";
+import { ICreateCheckoutSessionPayload } from "./payment.interface.js";
 
 const createCheckoutSession = async (
   customerId: string,

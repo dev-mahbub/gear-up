@@ -1,5 +1,5 @@
-import { prisma } from "../../lib/prisma";
-import { IUpdateUserStatusPayload } from "./admin.interface";
+import { prisma } from "../../lib/prisma.js";
+import { IUpdateUserStatusPayload } from "./admin.interface.js";
 
 const getAllUsersFromDB = async () => {
   const result = await prisma.user.findMany({
