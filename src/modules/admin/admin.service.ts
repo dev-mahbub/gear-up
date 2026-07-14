@@ -49,6 +49,20 @@ const updateUserStatusToDB = async (
   return result;
 };
 
+const getAllGearFromDB = async () => {
+  const result = await prisma.gear.findMany({
+    include: {
+      category: true,
+      provider: {
+        select: { id: true, name: true, email: true },
+      },
+    },
+    orderBy: { created_at: "desc" },
+  });
+
+  return result;
+};
+
 const getAllRentalOrdersFromDB = async () => {
   const result = await prisma.rentalOrder.findMany({
     include: {
@@ -69,5 +83,6 @@ const getAllRentalOrdersFromDB = async () => {
 export const adminService = {
   getAllUsersFromDB,
   updateUserStatusToDB,
+  getAllGearFromDB,
   getAllRentalOrdersFromDB,
 };

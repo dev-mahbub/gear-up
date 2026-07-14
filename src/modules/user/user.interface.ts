@@ -5,7 +5,7 @@ export interface IUserRegisterPayload {
   phone?: string;
   address?: string;
   role?: "ADMIN" | "CUSTOMER" | "PROVIDER";
-  status?: "ACTIVE" | "BLOCKED";
+  active_status?: "ACTIVE" | "BLOCKED";
 }
 
 export interface IUpdateProfilePayload {

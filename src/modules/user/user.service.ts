@@ -7,7 +7,8 @@ import {
 import bcrypt from "bcryptjs";
 
 const registerUserToDB = async (payload: IUserRegisterPayload) => {
-  const { name, email, password, phone, address, role, status } = payload;
+  const { name, email, password, phone, address, role, active_status } =
+    payload;
 
   const isUserExits = await prisma.user.findUnique({
     where: { email },
@@ -29,7 +30,7 @@ const registerUserToDB = async (payload: IUserRegisterPayload) => {
       phone,
       address,
       role,
-      status,
+      active_status,
     },
     omit: {
       password: true,
